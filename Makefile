@@ -13,8 +13,6 @@ PKG_VERSION:=1
 PKG_RELEASE:=8
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
-PO2LMO:=$(TOPDIR)/po2lmo
-
 define Package/$(PKG_NAME)
   SECTION:=luci
   CATEGORY:=LuCI
@@ -44,7 +42,7 @@ define Package/$(PKG_NAME)/install
 	$(CP) ./root/* $(1)
 	#$(INSTALL_DIR) $(1)/usr/lib/lua/luci
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
-	$(PO2LMO) ./po/zh-cn/frp.zh-cn.po $(1)/usr/lib/lua/luci/i18n/frp.zh-cn.lmo
+	po2lmo ./po/zh-cn/frp.zh-cn.po $(1)/usr/lib/lua/luci/i18n/frp.zh-cn.lmo
 	$(CP) ./luasrc/* $(1)/usr/lib/lua/luci
 endef
 
